@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@iconify/react" Version="&gt;= 3.2.2" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Types.fs" />
+    <Compile Include="Interop.fs" />
+    <Compile Include="Icon.fs" />
+    <Compile Include="Exports.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Glutinum.Iconify\Glutinum.Iconify.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

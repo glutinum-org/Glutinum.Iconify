@@ -1,0 +1,9 @@
+node_modules
+
+.ionide/
+
+bin/
+obj/
+*.fs.js
+dist/
+demo/stats.html

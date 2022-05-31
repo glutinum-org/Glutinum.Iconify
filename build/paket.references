@@ -1,0 +1,10 @@
+group Build
+    FSharp.Core
+    Fake.Core.Environment
+    Fake.IO.FileSystem
+    BlackFox.CommandLine
+    Fake.DotNet.Cli
+    BlackFox.Fake.BuildTask
+    BlackFox.PathEnvironment
+    Ionide.KeepAChangelog
+    Fake.Api.Github

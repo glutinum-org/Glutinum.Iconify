@@ -1,0 +1,19 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.fs.js": false,
+        "**/*.fs.js.map": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/fable_modules": true,
+    },
+    "FSharp.suggestGitignore": false
+}
