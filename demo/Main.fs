@@ -4,6 +4,8 @@ open Feliz
 open Browser.Dom
 open Fable.Core.JsInterop
 open Feliz.Iconify
+open Glutinum.IconifyIcons.Mdi
+open Glutinum.IconifyIcons.AntDesign
 
 open type Feliz.Iconify.Offline.Exports
 
@@ -23,7 +25,7 @@ let private Component () =
 
         prop.children [
             Icon [
-                icon.icon mdi.zorro_mask
+                icon.icon antDesign.antCloud
             ]
         ]
     ]

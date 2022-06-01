@@ -1,6 +1,5 @@
 namespace Glutinum.Iconify
 
-open Feliz
 open Fable.Core
 
 [<Global>]

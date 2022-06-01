@@ -3,6 +3,8 @@ module BuildHelpers
 open Fake.Core
 open BlackFox
 
+let cwd = System.Environment.CurrentDirectory
+
 module Proc =
     open System
     open System.Text

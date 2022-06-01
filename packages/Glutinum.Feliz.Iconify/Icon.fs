@@ -2,7 +2,6 @@ namespace Feliz.Iconify
 
 open Feliz
 open Fable.Core
-open Fable.Core.JsInterop
 open Glutinum.Iconify
 
 [<StringEnum>]
