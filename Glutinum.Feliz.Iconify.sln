@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Build", "build\Build.fsproj", "{5260B26C-FDA4-4D5A-B289-5206496ADFBB}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Demo", "demo\Demo.fsproj", "{854BC572-BD2B-4BDC-88CB-D2EFDB44ACBA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{7D2665DB-6AB9-4814-AD3E-53593BB82181}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.Iconify", "packages\Glutinum.Iconify\Glutinum.Iconify.fsproj", "{FB5E8888-A8C1-443B-B6C1-C290333A6933}"
@@ -16,6 +14,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.IconifyIcons.Mdi", "packages\Glutinum.IconifyIcons.Mdi\Glutinum.IconifyIcons.Mdi.fsproj", "{55A2A932-5A95-49CA-993A-BF64B630CBD0}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.IconifyIcons.AntDesign", "packages\Glutinum.IconifyIcons.AntDesign\Glutinum.IconifyIcons.AntDesign.fsproj", "{02969802-E7DF-41A3-9D55-67A3B222AAAD}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "tests\Tests.fsproj", "{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +30,6 @@ Global
 		{5260B26C-FDA4-4D5A-B289-5206496ADFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5260B26C-FDA4-4D5A-B289-5206496ADFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5260B26C-FDA4-4D5A-B289-5206496ADFBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{854BC572-BD2B-4BDC-88CB-D2EFDB44ACBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{854BC572-BD2B-4BDC-88CB-D2EFDB44ACBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{854BC572-BD2B-4BDC-88CB-D2EFDB44ACBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{854BC572-BD2B-4BDC-88CB-D2EFDB44ACBA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB5E8888-A8C1-443B-B6C1-C290333A6933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB5E8888-A8C1-443B-B6C1-C290333A6933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB5E8888-A8C1-443B-B6C1-C290333A6933}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,6 +46,10 @@ Global
 		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FB5E8888-A8C1-443B-B6C1-C290333A6933} = {7D2665DB-6AB9-4814-AD3E-53593BB82181}

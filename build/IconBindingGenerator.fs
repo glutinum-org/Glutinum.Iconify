@@ -97,8 +97,8 @@ let generateBinding (iconPackageFolder : string) (exceptions : Map<string, Excep
 
         // Add the project to the solution
         run dotnet $"sln add %s{packageDestination}" cwd
-        // Add the project to the demo project
-        run dotnet $" dotnet add .\demo\Demo.fsproj reference %s{packageDestination}" cwd
+        // Add the project to the test project
+        run dotnet $" dotnet add tests/Tests.fsproj reference %s{packageDestination}" cwd
 
     let sb = new StringBuilder()
 

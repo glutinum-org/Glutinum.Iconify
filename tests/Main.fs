@@ -15,11 +15,8 @@ emitJsStatement () "import React from \"react\""
 
 importSideEffects "./index.scss"
 
-
 [<ReactComponent>]
 let private Component () =
-    let isLeftPanelVisible, setLeftPanelVisibility = React.useState true
-
     Html.div [
         prop.className "wrapper"
 

@@ -12,7 +12,7 @@ open System.Text.RegularExpressions
 open Fake.Api
 open IconBindingGenerator
 
-let demoPath = Path.getFullName "demo"
+let testsPath = Path.getFullName "tests"
 let srcPath = Path.getFullName "src"
 
 let gitOwner = "glutinum-org"
@@ -24,14 +24,14 @@ let main args =
 
     let clean = BuildTask.create "Clean" [] {
         [
-            demoPath </> "bin"
-            demoPath </> "obj"
+            testsPath </> "bin"
+            testsPath </> "obj"
             srcPath </> "bin"
             srcPath </> "obj"
         ]
         |> Shell.cleanDirs
 
-        !! (Glob.fableJs demoPath)
+        !! (Glob.fableJs testsPath)
         ++ (Glob.fableJs srcPath)
         |> Seq.iter Shell.rm
     }
@@ -41,22 +41,72 @@ let main args =
     }
 
     let refreshIcons = BuildTask.create "RefreshIcons" [] {
+        generateBinding "academicons" Map.empty
+        generateBinding "akar-icons" Map.empty
         generateBinding "ant-design" Map.empty
-        // generateBinding "arcticons" Map.empty
-        // generateBinding "carbon" Map.empty
-        // generateBinding "eva" Map.empty
-        // generateBinding "fa-regular" Map.empty
-        // generateBinding "fa-solid" Map.empty
-        // generateBinding "fe" Map.empty
-        // generateBinding "feather" Map.empty
-        // generateBinding "fluent" Map.empty
-        // generateBinding "fontisto" Map.empty
-        // generateBinding "grommet-icons" Map.empty
-        // generateBinding "healthicons" Map.empty
-        // generateBinding "heroicons-outline" Map.empty
-        // generateBinding "heroicons-solid" Map.empty
-        // generateBinding "ic" Map.empty
-        // generateBinding "logos" Map.empty
+        generateBinding "arcticons" Map.empty
+        generateBinding "bi" Map.empty
+        generateBinding "brandico" Map.empty
+        generateBinding "bx" Map.empty
+        generateBinding "bxl" Map.empty
+        generateBinding "bxs" Map.empty
+        generateBinding "bytesize" Map.empty
+        generateBinding "carbon" Map.empty
+        generateBinding "charm" Map.empty
+        generateBinding "ci" Map.empty
+        generateBinding "cib" Map.empty
+        generateBinding "cif" Map.empty
+        generateBinding "cil" Map.empty
+        generateBinding "circle-flags" Map.empty
+        generateBinding "clarity" Map.empty
+        generateBinding "codicon" Map.empty
+        generateBinding "cryptocurrency" Map.empty
+        generateBinding "ei" Map.empty
+        generateBinding "emojione" Map.empty
+        generateBinding "emojione-monotone" Map.empty
+        generateBinding "emojione-v1" Map.empty
+        generateBinding "entypo-social" Map.empty
+        generateBinding "eos-icons" Map.empty
+        generateBinding "ep" Map.empty
+        generateBinding "eva" Map.empty
+        generateBinding "fa-regular" Map.empty
+        generateBinding "fa-solid" Map.empty
+        generateBinding "fa6-brands" Map.empty
+        generateBinding "fa6-regular" Map.empty
+        generateBinding "fa6-solid" Map.empty
+        generateBinding "fad" Map.empty
+        generateBinding "fe" Map.empty
+        generateBinding "feather" Map.empty
+        generateBinding "file-icons" Map.empty
+        generateBinding "flag" Map.empty
+        generateBinding "flagpack" Map.empty
+        generateBinding "fluent" Map.empty
+        generateBinding "fontisto" Map.empty
+        generateBinding "fxemoji" Map.empty
+        generateBinding "gala" Map.empty
+        generateBinding "geo" Map.empty
+        generateBinding "gg" Map.empty
+        generateBinding "gis" Map.empty
+        generateBinding "gridicons" Map.empty
+        generateBinding "grommet-icons" Map.empty
+        generateBinding "healthicons" Map.empty
+        generateBinding "heroicons-outline" Map.empty
+        generateBinding "heroicons-solid" Map.empty
+        generateBinding "ic" Map.empty
+        generateBinding "icon-park" Map.empty
+        generateBinding "icon-park-outline" Map.empty
+        generateBinding "icon-park-solid" Map.empty
+        generateBinding "icon-park-twotone" Map.empty
+        generateBinding "iconoir" Map.empty
+        generateBinding "ion" Map.empty
+        generateBinding "jam" Map.empty
+        generateBinding "line-md" Map.empty
+        generateBinding "logos" Map.empty
+        generateBinding "lucide" Map.empty
+        generateBinding "majesticons" Map.empty
+        generateBinding "maki" Map.empty
+        generateBinding "map" Map.empty
+        generateBinding "material-symbols" Map.empty
 
         generateBinding
             "mdi"
@@ -71,12 +121,39 @@ let main args =
                 ]
             )
 
-        // generateBinding "simple-icons" Map.empty
-        // generateBinding "tabler" Map.empty
-        // generateBinding "vscode-icons" Map.empty
+        generateBinding "mdi-light" Map.empty
+        generateBinding "medical-icon" Map.empty
+        generateBinding "mi" Map.empty
+        generateBinding "nimbus" Map.empty
+        generateBinding "noto" Map.empty
+        generateBinding "noto-v1" Map.empty
+        generateBinding "octicon" Map.empty
+        generateBinding "ooui" Map.empty
+        generateBinding "openmoji" Map.empty
+        generateBinding "pepicons" Map.empty
+        generateBinding "ph" Map.empty
+        generateBinding "pixelarticons" Map.empty
+        generateBinding "prime" Map.empty
+        generateBinding "quill" Map.empty
+        generateBinding "radix-icons" Map.empty
+        generateBinding "ri" Map.empty
+        generateBinding "simple-icons" Map.empty
+        generateBinding "system-uicons" Map.empty
+        generateBinding "tabler" Map.empty
+        generateBinding "teenyicons" Map.empty
+        generateBinding "twemoji" Map.empty
+        generateBinding "typcn" Map.empty
+        generateBinding "uil" Map.empty
+        generateBinding "uim" Map.empty
+        generateBinding "uis" Map.empty
+        generateBinding "uit" Map.empty
+        generateBinding "uiw" Map.empty
+        generateBinding "vscode-icons" Map.empty
+        generateBinding "wi" Map.empty
+        generateBinding "zondicons" Map.empty
     }
 
-    let watchDemo = BuildTask.create "WatchDemo" [ npmInstall; clean ] {
+    let watchDemo = BuildTask.create "Watch" [ npmInstall; clean ] {
         // All for graceful shutdown on Ctrl+C while the processes are running
         Console.CancelKeyPress.AddHandler(fun _ ea ->
             ea.Cancel <- true
@@ -85,8 +162,8 @@ let main args =
         )
 
         [
-            "vite", npx "vite dev" demoPath
-            "fable", dotnet "fable --watch" demoPath
+            "vite", npx "vite dev" testsPath
+            "fable", dotnet "fable --watch" testsPath
         ]
         |> runParallel
     }
