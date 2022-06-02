@@ -170,10 +170,10 @@ let private initBindingIfNeeded
             Templates.paketReferences
         )
 
-        // Add the project to the solution
+        // Add the project to the solution,
+        // so we can easily build everything in a single command
+        // to check that everything is good
         run dotnet $"sln add %s{fsharpProjectFolder}" cwd
-        // Add the project to the test project
-        run dotnet $" dotnet add tests/Tests.fsproj reference %s{fsharpProjectFolder}" cwd
 
 let private writeBindingHeader
     (sb : StringBuilder)
