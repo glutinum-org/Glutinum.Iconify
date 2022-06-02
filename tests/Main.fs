@@ -4,7 +4,7 @@ open Feliz
 open Browser.Dom
 open Fable.Core.JsInterop
 open Feliz.Iconify
-open Glutinum.IconifyIcons.Mdi
+open Glutinum.Iconify
 open Glutinum.IconifyIcons.AntDesign
 
 open type Feliz.Iconify.Offline.Exports
@@ -15,6 +15,13 @@ emitJsStatement () "import React from \"react\""
 
 importSideEffects "./index.scss"
 
+let triangleRightIcon =
+    IconifyIcon(
+        body = "<path d=\"M7 6v12l10-6z\" fill=\"currentColor\"/>",
+        width = 26.,
+        height = 26.
+    )
+
 [<ReactComponent>]
 let private Component () =
     Html.div [
@@ -22,7 +29,7 @@ let private Component () =
 
         prop.children [
             Icon [
-                icon.icon antDesign.antCloud
+                icon.icon triangleRightIcon
             ]
         ]
     ]

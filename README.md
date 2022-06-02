@@ -4,9 +4,117 @@ Bindings for [iconify](https://iconify.design/) ecosystem.
 
 ## Usage
 
+⚠️ Only the offline API using React is supported right now
+
+If you need, to use the online API or another framework (Vue, WebComponent, etc.) supported by Iconify please open issue for discussion.
+
+### Core API
+
+#### Custom icons
+
+If needed you can create a custom icons like that:
+
+```fs
+// Creation of a custom icon
+let triangleRightIcon =
+    IconifyIcon(
+        body = "<path d=\"M7 6v12l10-6z\" fill=\"currentColor\"/>",
+        width = 26.,
+        height = 26.
+    )
+
+// Example of consuming it
+Icon [
+    icon.icon triangleRightIcon
+]
+```
+
+```f#
+// Creation of a custom icon
+let triangleRightIcon =
+    IconifyIcon(
+        body = "<path d=\"M7 6v12l10-6z\" fill=\"currentColor\"/>",
+        width = 26.,
+        height = 26.
+    )
+
+// Example of consuming it
+Icon [
+    icon.icon triangleRightIcon
+]
+```
+
+### React
+
+#### Installation
+
+```
+# using nuget
+dotnet add package Glutinum.Feliz.Iconify
+
+# or with paket
+paket add Glutinum.Feliz.Iconify --project /path/to/project.fsproj
+```
+
+You also need to install fuse.js package.
+
+```
+# using Femto
+dotnet femto --resolve
+
+# using NPM
+npm install @iconify/react
+
+# using yarn
+yarn add @iconify/react
+```
+
+Before being able to consume icons, you also need to install the specific binding for the icon set you want to use.
+
+<!-- Begin:binding_reference_table -->
+| Nuget                   | Npm      |
+|-------------------------|----------|
+| Glutinum.IconifyIcons.* | Generated |
+<!-- End:binding_reference_table -->
+
+#### Offline
+
+```fs
+open Feliz
+
+// Access to the icon properties
+open Feliz.Iconify
+// Access to the Icon React component for Offline usage
+open type Feliz.Iconify.Offline.Exports
+// Access to the antDesign list of icon
+open Glutinum.IconifyIcons.AntDesign
+
+[<ReactComponent>]
+let private MyComponent () =
+    Icon [
+        icon.icon antDesign.antCloud
+    ]
+```
+
 ## Contributing
 
-### Icon binding generator
+This section is only for the maintainers and contributors of the project.
+
+### How the bindings are written
+
+| Binding                 | Manual/Generated |
+|-------------------------|------------------|
+| Glutinum.Iconify        | Manual           |
+| Glutinum.Feliz.Iconify  | Manual           |
+| Glutinum.IconifyIcons.* | Generated        |
+
+If a binding is generated, it means that you should not edit it manually.
+You should use the icon binding generator which will be responsible for
+generating the binding code and changelog for you.
+
+In case of manual binding, you can edit it as a normal binding and add entry to the changelog.
+
+### Icon binding generator for `Glutinum.IconifyIcons.*`
 
 The icon bindings are done using a generator.
 
@@ -56,14 +164,18 @@ type antDesign =
 
     `npm i -D @iconify-icons/mdi`
 
-2. In `Build.fs` add the instruction for your icon set to he `RefreshIcons` task.
+2. In `Build.fs` add the instruction for your icon set to the `iconifyIconsGeneratorReferences` list.
 
 ```fs
-    let refreshIcons = BuildTask.create "RefreshIcons" [] {
+let iconifyIconsGeneratorReferences =
+    [
         // ...
-        generateBinding "mdi" Map.empty
+        {
+            IconifyIconPackageName = "akar-icons"
+            Exceptions = Map.empty
+        }
         // ...
-    }
+    ]
 ```
 
 3. Run the generation a first time
@@ -82,7 +194,7 @@ type antDesign =
 
 Sometimes, you will need to fix or improve the default rule of the generator.
 
-In order, to archieve that you can pass a `Map` of rules.
+In order, to do that you can pass a `Map` of rules.
 
 - `Skip`: Don't generate an instruction for this icon
 - `ForceName`: Force the generated name for this icon
@@ -92,18 +204,16 @@ For example, in the case of `@iconify-icons/mdi` some icons are included twice u
 Using the exception rules allow us to only output the icon once.
 
 ```fs
-    let refreshIcons = BuildTask.create "RefreshIcons" [] {
-        generateBinding
-            "mdi"
-            (
-                Map.ofList [
-                    // Packages contains "1-2-3" and "123" has equivalent icons
-                    "1-2-3", Skip
-                    // Packages contains "a-b-c" and "abc" has equivalent icons
-                    "a-b-c", Skip
-                    // Packages contains "a-b-c-off" and "abc-off" has equivalent icons
-                    "a-b-c-off", Skip
-                ]
-            )
-    }
+{
+    IconifyIconPackageName = "mdi"
+    Exceptions =
+        Map.ofList [
+            // Packages contains "1-2-3" and "123" has equivalent icons
+            "1-2-3", Skip
+            // Packages contains "a-b-c" and "abc" has equivalent icons
+            "a-b-c", Skip
+            // Packages contains "a-b-c-off" and "abc-off" has equivalent icons
+            "a-b-c-off", Skip
+        ]
+}
 ```

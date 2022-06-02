@@ -3,7 +3,7 @@ source https://api.nuget.org/v3/index.json
 storage: none
 framework: netstandard2.0
 
-nuget FSharp.Core >= 5.0.2
+nuget FSharp.Core >= 4.7.2
 nuget Fable.Core
 nuget Feliz
 nuget Fable.Browser.Svg
@@ -20,7 +20,6 @@ group Build
     nuget Fake.IO.FileSystem
     nuget BlackFox.CommandLine
     nuget Fake.DotNet.Cli
-    nuget Fake.Api.Github
     nuget BlackFox.Fake.BuildTask
     nuget BlackFox.PathEnvironment
     nuget Ionide.KeepAChangelog

@@ -7,8 +7,13 @@
   <ItemGroup>
     <Compile Include="StringBuilder.Extensions.fs" />
     <Compile Include="FSharp.Keywords.fs" />
-    <Compile Include="BuildHelpers.fs" />
-    <Compile Include="IconBindingGenerator.fs" />
+    <Compile Include="Helpers\String.fs" />
+    <Compile Include="Helpers\Proc.fs" />
+    <Compile Include="Helpers\CLI.fs" />
+    <Compile Include="Helpers\Glob.fs" />
+    <Compile Include="Helpers\Changelog.fs" />
+    <Compile Include="IconifyIconsBindingGenerator\Templates.fs" />
+    <Compile Include="IconifyIconsBindingGenerator\Generator.fs" />
     <Compile Include="Build.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

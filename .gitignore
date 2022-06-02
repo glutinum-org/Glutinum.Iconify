@@ -7,3 +7,4 @@ obj/
 *.fs.js
 dist/
 demo/stats.html
+.idea/

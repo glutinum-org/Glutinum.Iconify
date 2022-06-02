@@ -7,4 +7,3 @@ group Build
     BlackFox.Fake.BuildTask
     BlackFox.PathEnvironment
     Ionide.KeepAChangelog
-    Fake.Api.Github
