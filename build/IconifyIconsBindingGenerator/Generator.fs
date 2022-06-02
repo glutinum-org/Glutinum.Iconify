@@ -351,24 +351,25 @@ let refreshReferencesTable (references : IconifyIconsGeneratorConfig list) =
             $"| `Glutinum.IconifyIcons.%s{fsharpPackageName}` | `%s{npmPackageName}` |"
         )
 
-
-    let newReferenceTable =
-        [
-            "<!-- Begin:binding_reference_table -->"
-            tableHeader
-            yield! tableRows
-            "<!-- End:binding_reference_table -->"
-        ]
-        |> String.concat "\n"
-
     let readmePath = "README.md"
     let readmeContent = File.ReadAllText readmePath
 
+    let startMarker = "<!-- Begin:binding_reference_table -->"
+    let endMarker = "<!-- End:binding_reference_table -->"
+
+    let startMarkerIndex = readmeContent.IndexOf(startMarker)
+    let endMarkerIndex = readmeContent.IndexOf(endMarker)
+
     let newReadmeContent =
-        Regex.Replace(
-            readmeContent,
-            "<!-- Begin:binding_reference_table -->(.|\s)*<!-- End:binding_reference_table -->",
-            newReferenceTable
-        )
+        [
+            readmeContent.Substring(0, startMarkerIndex)
+            startMarker
+            tableHeader
+            yield! tableRows
+            endMarker
+            readmeContent.Substring(endMarkerIndex + endMarker.Length)
+        ]
+        |> String.concat "\n"
+
 
     File.WriteAllText(readmePath, newReadmeContent)
