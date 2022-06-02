@@ -9,7 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\packages\Glutinum.Feliz.Iconify\Glutinum.Feliz.Iconify.fsproj" />
-    <ProjectReference Include="..\packages\Glutinum.IconifyIcons.Mdi\Glutinum.IconifyIcons.Mdi.fsproj" />
     <ProjectReference Include="..\packages\Glutinum.Iconify\Glutinum.Iconify.fsproj" />
     <ProjectReference Include="..\packages\Glutinum.IconifyIcons.AntDesign\Glutinum.IconifyIcons.AntDesign.fsproj" />
   </ItemGroup>

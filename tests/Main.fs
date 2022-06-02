@@ -5,6 +5,7 @@ open Browser.Dom
 open Fable.Core.JsInterop
 open Feliz.Iconify
 open Glutinum.Iconify
+open Glutinum.IconifyIcons.AntDesign
 
 open type Feliz.Iconify.Offline.Exports
 

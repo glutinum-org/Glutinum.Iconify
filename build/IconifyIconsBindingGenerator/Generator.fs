@@ -270,8 +270,12 @@ let private addChangelogEntry
     let newChangelogContent =
         let (NpmPackageName npmPackageName) = npmPackageName
 
-        changelogContent
-        + Templates.changelogEntry npmPackageName npmPackageVersion nextVersion
+        let marker = "## Unreleased"
+        let makerIndex = changelogContent.IndexOf(marker)
+
+        let newEntry = Templates.changelogEntry nextVersion npmPackageName npmPackageVersion
+
+        changelogContent.Insert(makerIndex + marker.Length, newEntry)
 
     // Write the new changelog content
     File.WriteAllText(changelogPath, newChangelogContent)
@@ -328,7 +332,7 @@ let generateBinding (config : IconifyIconsGeneratorConfig) =
         // Add a changelog entry
         addChangelogEntry fsharpProjectFolder npmPackageName currentNpmPackageVersion
 
-    // Otherwise, do nothing
+//    // Otherwise, do nothing
 
 let refreshReferencesTable (references : IconifyIconsGeneratorConfig list) =
 

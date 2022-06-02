@@ -1,5 +1,7 @@
 ﻿module IconifyIconsBindingGenerator.Templates
 
+open System
+
 let changelog =
     """# Changelog
 All notable changes to this project will be documented in this file.
@@ -14,7 +16,12 @@ let changelogEntry
     (fsharpPackageVersion : string)
     (npmPackageName : string)
     (npmPackageVersion : string) =
-    $"""## %s{fsharpPackageVersion}
+    let now = DateTime.Now
+    let date = now.ToString("yyyy-MM-dd")
+
+    $"""
+
+## %s{fsharpPackageVersion} - %s{date}
 
 ### Changed
 
