@@ -11,10 +11,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.Iconify", "package
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.Feliz.Iconify", "packages\Glutinum.Feliz.Iconify\Glutinum.Feliz.Iconify.fsproj", "{4F9A1B5E-E36C-47B6-805B-7383DFCB9D84}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.IconifyIcons.Mdi", "packages\Glutinum.IconifyIcons.Mdi\Glutinum.IconifyIcons.Mdi.fsproj", "{55A2A932-5A95-49CA-993A-BF64B630CBD0}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Glutinum.IconifyIcons.AntDesign", "packages\Glutinum.IconifyIcons.AntDesign\Glutinum.IconifyIcons.AntDesign.fsproj", "{02969802-E7DF-41A3-9D55-67A3B222AAAD}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "tests\Tests.fsproj", "{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}"
 EndProject
 Global
@@ -38,14 +34,6 @@ Global
 		{4F9A1B5E-E36C-47B6-805B-7383DFCB9D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F9A1B5E-E36C-47B6-805B-7383DFCB9D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F9A1B5E-E36C-47B6-805B-7383DFCB9D84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55A2A932-5A95-49CA-993A-BF64B630CBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55A2A932-5A95-49CA-993A-BF64B630CBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55A2A932-5A95-49CA-993A-BF64B630CBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55A2A932-5A95-49CA-993A-BF64B630CBD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02969802-E7DF-41A3-9D55-67A3B222AAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB42F97-099F-44E4-90F2-BCB0DFC2FFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,7 +42,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FB5E8888-A8C1-443B-B6C1-C290333A6933} = {7D2665DB-6AB9-4814-AD3E-53593BB82181}
 		{4F9A1B5E-E36C-47B6-805B-7383DFCB9D84} = {7D2665DB-6AB9-4814-AD3E-53593BB82181}
-		{55A2A932-5A95-49CA-993A-BF64B630CBD0} = {7D2665DB-6AB9-4814-AD3E-53593BB82181}
-		{02969802-E7DF-41A3-9D55-67A3B222AAAD} = {7D2665DB-6AB9-4814-AD3E-53593BB82181}
 	EndGlobalSection
 EndGlobal

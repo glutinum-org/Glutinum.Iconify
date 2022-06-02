@@ -1,5 +1,3 @@
-open System.ComponentModel.Design
-open Fake
 open Fake.Core
 open Fake.IO
 open Fake.IO.FileSystemOperators
@@ -10,7 +8,6 @@ open BlackFox.CommandLine
 open System
 open System.Text.RegularExpressions
 open System.IO
-open Ionide.KeepAChangelog
 open IconifyIconsBindingGenerator.Generator
 
 
@@ -46,7 +43,7 @@ let releasePackage (packageFolder : string) =
     if not needRelease then
         printfn $"Package %s{packageFolder} is up to date, skipping release"
     else
-        let (stdout, _) =
+        let stdout, _ =
             dotnet "pack -c Release" packageFolder
             |> Proc.runWithCaptureOutputAndRedirect
 
