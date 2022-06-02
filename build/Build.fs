@@ -496,7 +496,7 @@ let main args =
         run npm "install" cwd
     }
 
-    let refreshMdi = BuildTask.create "TestRefreshIcons" [] {
+    let refreshMdi = BuildTask.create "TestRefreshIcons" [ npmInstall ] {
         generateBinding
             {
                 IconifyIconPackageName = "ant-design"
@@ -504,10 +504,13 @@ let main args =
             }
     }
 
-    let refreshIcons = BuildTask.create "RefreshIcons" [] {
+    let refreshIcons = BuildTask.create "RefreshIcons" [ npmInstall ] {
         // Generate the bindings
         iconifyIconsGeneratorReferences
-        |> Seq.iter generateBinding
+        |> Seq.iteri (fun index config ->
+            printfn $"Generating binding %i{index + 1}/%i{iconifyIconsGeneratorReferences.Length}: %s{config.IconifyIconPackageName}"
+            generateBinding config
+        )
 
         // Refresh the references table in README.md
         refreshReferencesTable iconifyIconsGeneratorReferences
