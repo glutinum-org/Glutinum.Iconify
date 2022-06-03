@@ -32,17 +32,27 @@ let releasePackage (packageFolder : string) =
 
     // Does the package need to be released?
     let needRelease =
-        if not(File.Exists lastPublishedVersionPath) then
-            true
-        else
-            let lastPublishedVersion = File.ReadAllText lastPublishedVersionPath
+        match latestVersion with
+        // Can't publish if the changelog has no version info
+        | None ->
+            false
+        | Some latestVersion ->
+            // If the package doesn't have the file "lastPublishedVersion.txt"
+            // It means it has never been published, so we can publish it
+            if not(File.Exists lastPublishedVersionPath) then
+                true
+            // Otherwise, we check that the last published version is different
+            // that the last version of the CHANGELOG
+            else
+                let lastPublishedVersion = File.ReadAllText lastPublishedVersionPath
 
-            // Naive way to detect if we need to publish a new version
-            latestVersion.ToString() <> lastPublishedVersion
+                // Naive way to detect if we need to publish a new version
+                latestVersion.ToString() <> lastPublishedVersion
 
     if not needRelease then
         printfn $"Package %s{packageFolder} is up to date, skipping release"
     else
+        // Generate the package to publish
         let stdout, _ =
             dotnet "pack -c Release" packageFolder
             |> Proc.runWithCaptureOutputAndRedirect
@@ -65,10 +75,12 @@ let releasePackage (packageFolder : string) =
                 |> CmdLine.appendRaw "--skip-duplicate"
                 |> CmdLine.toString
 
-            File.WriteAllText(lastPublishedVersionPath, latestVersion.ToString())
+            // Release the package
+//            run dotnet args cwd
 
-    //        run dotnet args cwd
-            ()
+            printfn "Publishin package"
+            // Update the last published version file
+            File.WriteAllText(lastPublishedVersionPath, latestVersion.Value.ToString())
 
 let iconifyIconsGeneratorReferences =
     [
@@ -532,13 +544,21 @@ let main args =
     }
 
     let release = BuildTask.create "Release" [ ] {
+        // 1. Publish Glutinum.Iconify which is the core library used by others packages
+        releasePackage "packages/Glutinum.Iconify"
+
+        // 2. Publish Glutinum.Feliz.Iconify
+        // This package depends on Glutinum.Iconify
+        releasePackage "packages/Glutinum.Feliz.Iconify"
+
+        // 3. Publish Glutinum.IconifyIcons.* packages
+        // These packages contains the icons bindings and depends on Glutinum.Iconify
+
         Directory.GetDirectories "packages"
-        |> Seq.iteri (fun i path ->
-            if i > 2 then
-                failwith "Stop"
-            else
-                releasePackage path
+        |> Seq.filter (fun dir ->
+            dir.StartsWith("packages/Glutinum.IconifyIcons.")
         )
+        |> Seq.iter releasePackage
     }
 
     BuildTask.runOrList ()
