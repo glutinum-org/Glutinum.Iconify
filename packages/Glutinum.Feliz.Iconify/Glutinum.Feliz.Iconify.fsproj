@@ -14,5 +14,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Glutinum.Iconify\Glutinum.Iconify.fsproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; **\*.fs; **\*.fsi; **\*.css" PackagePath="fable" />
+    <None Include="$(MSBuildThisFileDirectory)\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
