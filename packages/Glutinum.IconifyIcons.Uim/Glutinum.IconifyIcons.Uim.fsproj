@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@iconify-icons/uim" Version="&gt;= 1.2.1" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Types.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Glutinum.Iconify\Glutinum.Iconify.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

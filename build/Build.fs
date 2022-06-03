@@ -71,14 +71,11 @@ let releasePackage (packageFolder : string) =
                 |> CmdLine.append nupkgFile
                 |> CmdLine.appendPrefix "--source" "nuget.org"
                 |> CmdLine.appendPrefix "--api-key" nugetKey
-                // Make dotnet nuget not fail if the package and version already exist
-                |> CmdLine.appendRaw "--skip-duplicate"
                 |> CmdLine.toString
 
             // Release the package
-//            run dotnet args cwd
+            run dotnet args cwd
 
-            printfn "Publishin package"
             // Update the last published version file
             File.WriteAllText(lastPublishedVersionPath, latestVersion.Value.ToString())
 
@@ -556,7 +553,7 @@ let main args =
 
         Directory.GetDirectories "packages"
         |> Seq.filter (fun dir ->
-            dir.StartsWith("packages/Glutinum.IconifyIcons.")
+            dir.Replace("\\", "/").StartsWith("packages/Glutinum.IconifyIcons.")
         )
         |> Seq.iter releasePackage
     }
