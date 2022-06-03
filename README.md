@@ -71,6 +71,30 @@ yarn add @iconify/react
 
 Before being able to consume icons, you also need to install the specific binding for the icon set you want to use.
 
+See [Packages references](#packages-references) for more information.
+
+#### Offline
+
+```fs
+open Feliz
+
+// Access to the icon properties
+open Feliz.Iconify
+// Access to the Icon React component for Offline usage
+open type Feliz.Iconify.Offline.Exports
+// Access to the antDesign list of icon
+open Glutinum.IconifyIcons.AntDesign
+
+[<ReactComponent>]
+let private MyComponent () =
+    Icon [
+        icon.icon antDesign.antCloud
+    ]
+```
+
+#### Packages references
+
+
 <!-- Begin:binding_reference_table -->
 | Nuget                   | Npm      |
 |-------------------------|----------|
@@ -172,26 +196,6 @@ Before being able to consume icons, you also need to install the specific bindin
 | `Glutinum.IconifyIcons.Wi` | `@iconify-icons/wi` |
 | `Glutinum.IconifyIcons.Zondicons` | `@iconify-icons/zondicons` |
 <!-- End:binding_reference_table -->
-
-
-#### Offline
-
-```fs
-open Feliz
-
-// Access to the icon properties
-open Feliz.Iconify
-// Access to the Icon React component for Offline usage
-open type Feliz.Iconify.Offline.Exports
-// Access to the antDesign list of icon
-open Glutinum.IconifyIcons.AntDesign
-
-[<ReactComponent>]
-let private MyComponent () =
-    Icon [
-        icon.icon antDesign.antCloud
-    ]
-```
 
 ## Contributing
 
