@@ -508,7 +508,7 @@ let main args =
         run npm "install" cwd
     }
 
-    let refreshMdi = BuildTask.create "TestRefreshIcons" [ npmInstall ] {
+    let testRefreshIcons = BuildTask.create "TestRefreshIcons" [ npmInstall ] {
         generateBinding
             {
                 IconifyIconPackageName = "ant-design"

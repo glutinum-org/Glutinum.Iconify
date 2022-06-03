@@ -362,14 +362,13 @@ let refreshReferencesTable (references : IconifyIconsGeneratorConfig list) =
 
     let newReadmeContent =
         [
-            readmeContent.Substring(0, startMarkerIndex)
+            readmeContent.Substring(0, startMarkerIndex - 1) // -1 Avoid adding a newline at each generation
             startMarker
             tableHeader
             yield! tableRows
             endMarker
-            readmeContent.Substring(endMarkerIndex + endMarker.Length)
+            readmeContent.Substring(endMarkerIndex + endMarker.Length + 1) // +1 Avoid adding a newline at each generation
         ]
         |> String.concat "\n"
-
 
     File.WriteAllText(readmePath, newReadmeContent)
