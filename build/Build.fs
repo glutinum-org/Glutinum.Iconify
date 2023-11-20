@@ -19,12 +19,12 @@ let gitName = "Glutinum.Iconify"
 
 let releasePackage (packageFolder : string) =
     let nugetKey =
-        match Environment.environVarOrNone "nuget_key" with
+        match Environment.environVarOrNone "NUGET_KEY" with
         | Some nugetKey ->
             nugetKey
 
         | None ->
-            failwith "nuget_key environment variable is not set"
+            failwith "NUGET_KEY environment variable is not set"
 
     let changelogPath = packageFolder </> "CHANGELOG.md"
     let lastPublishedVersionPath = packageFolder </> "lastPublishedVersion.txt"
